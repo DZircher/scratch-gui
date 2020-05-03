@@ -34,7 +34,7 @@ class StageHeader extends React.Component {
         if (this.props.isShowingProject && !prevProps.isShowingProject) {
 
             if (this.props.vm.initialized){
-                fetch('https://files.terriblefish.com/DanaScratch.sb3')
+                fetch('./static/Scratch_Kids.sb3')
                 .then(response => {
                   if (response.status !== 200)  { 
                     throw new Error('failed to download file')
