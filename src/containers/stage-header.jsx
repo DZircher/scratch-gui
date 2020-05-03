@@ -43,11 +43,9 @@ class StageHeader extends React.Component {
                   }
                 })
                 .then(arrayBuffer => {
-                    const filename = "DanaScratch.sb3";
         
                     this.props.vm.loadProject(arrayBuffer)
                     .then(() => {
-                        debugger;
                         
                        this.props.onSetStageFull();
                         
@@ -57,9 +55,6 @@ class StageHeader extends React.Component {
                         log.warn(error);
                         alert(this.props.intl.formatMessage(messages.loadError)); // eslint-disable-line no-alert
                         this.props.onLoadingFinished(this.props.loadingState, false);
-                        // Reset the file input after project is loaded
-                        // This is necessary in case the user wants to reload a project
-                        //this.resetFileInput();
                     });
                })        
             }
