@@ -26,15 +26,29 @@ class StageHeader extends React.Component {
     }
     componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
-
-
-
     }
+
     componentDidUpdate(prevProps){
         if (this.props.isShowingProject && !prevProps.isShowingProject) {
 
             if (this.props.vm.initialized){
-                fetch('./static/Scratch_Kids.sb3')
+                // decide which project files to load
+                debugger;
+
+                var params = Array.from(new URLSearchParams(window.location.search));
+                var projectName = params[0][0];
+                var fileToLoad = null;
+
+                if (projectName.toLowerCase() === "marbleroll")
+                {
+                    projectName = "./static/Scratch_Kids.sb3"
+                }
+                else
+                {
+                    projectName = "./static/DanaScratchDemo.sb3"
+                }
+
+                fetch(projectName)
                 .then(response => {
                   if (response.status !== 200)  { 
                     throw new Error('failed to download file')
