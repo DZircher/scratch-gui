@@ -36,8 +36,16 @@ class StageHeader extends React.Component {
                 debugger;
 
                 var params = Array.from(new URLSearchParams(window.location.search));
-                var projectName = params[0][0];
-                var fileToLoad = null;
+                
+                var projectName;
+                if (params.length == 0)
+                {
+                    projectName = "";
+                }
+                else
+                {
+                    projectName = params[0][0];
+                }
 
                 if (projectName.toLowerCase() === "marbleroll")
                 {
